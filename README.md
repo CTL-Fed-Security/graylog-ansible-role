@@ -1,5 +1,3 @@
-[![Galaxy](https://img.shields.io/badge/galaxy-graylog--ansible--role-blue)](https://galaxy.ansible.com/Graylog2/graylog) [![CI](https://github.com/Graylog2/graylog-ansible-role/actions/workflows/ci.yml/badge.svg)](https://github.com/Graylog2/graylog-ansible-role/actions/workflows/ci.yml) ![Ansible](https://img.shields.io/ansible/role/d/56392.svg) ![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F56392%2F&query=$.min_ansible_version) ![Ansible](https://img.shields.io/ansible/quality/56392)
-
 
 # Graylog Ansible Role
 
@@ -9,46 +7,34 @@
 - At least 4gb of memory on the target instance.
   - Linux
     - Currently tested against:
-        - Ubuntu 18.04
-        - Ubuntu 20.04
-        - Centos 7
-        - Centos 8
+        - Redhat / Centos / Rocky 9
 
 To install the role, run:
 
     ansible-galaxy install graylog2.graylog
 
-
-
 ## Dependencies
 
 Graylog has the following dependencies:
   - Java
-  - [Elasticsearch](https://github.com/elastic/ansible-elasticsearch)
+  - Elasticsearch or Opensearch
   - MongoDB
 
 See the official [Graylog documentation](https://docs.graylog.org/docs/installing) for more details on these requirements.
 
-Be certain you are running a supported version of Elasticsearch. You can configure what version of Elasticsearch Ansible will install with the `es_version` variable. Running Graylog against an unsupported version of Elasticsearch can break your instance!
+Be certain you are running a supported version of Elasticsearch/Opensearch. Running Graylog against an unsupported version of Elasticsearch/Opensearch can break your instance!
 
 **Compatibility Matrix**
 
-| Graylog version   | 3.x | 4.x |
-|:--------------|:-------------:|:-------------:|
-| Elasticsearch | 5-6 | 6.8 - 7.10 |
+| Graylog version   | Minimum MongoDB Version | Maximum MongoDB Version | Minimum Opensearch Version | Maxminum Opensearch Version |
+|:------------------|:-----------------------:|:-----------------------:|:--------------------------:|:---------------------------:|
+| 5.2.X | 5.0.7 | 6.8 | 1.1.x | 2.13.X |
+| 6.0.x | 5.0.7 | 7.x | 1.1.x (or 1.3.x for Graylog Security) | 2.15.x |
+| 6.1.x | 5.0.7 | 7.x | 1.1.x (or 1.3.x for Graylog Security) | 2.15.x |
 
 
 You will need to these Ansible role dependencies:
   - [Java](https://github.com/lean-delivery/ansible-role-java)
-  - [Elasticsearch](https://github.com/elastic/ansible-elasticsearch).
-
-To install them, run:
-
-    ansible-galaxy install -r <GRAYLOG ROLE_DIRECTORY>/requirements.yml
-
-
-
-
 
 ## Example Playbook
 
@@ -209,20 +195,9 @@ Finally, we install Graylog.
 
 We set `graylog_install_elasticsearch: False` and `graylog_install_mongodb: False` so the Graylog role doesn't try to install Elasticsearch and MongoDB. Those flags are intended for single-instance installs.
 
-The full example can be seen [here](molecule/example2/converge.yml). Our [documentation](https://docs.graylog.org/v1/docs/multinode-setup) has more in-depth advice on configuring a multi-node Graylog setup.
-
-
 ## Role Variables
 
 A list of all available role variables is documented [here](docs/Variables.md).
-
-## Testing
-
-We run smoke tests for Graylog using this role. Documentation on that can be found [here](docs/Testing.md)
-
-## Author Information
-
-Author: Marius Sturm (<marius@graylog.com>) and [contributors](https://github.com/Graylog2/graylog2-ansible-role/graphs/contributors)
 
 ## License
 
