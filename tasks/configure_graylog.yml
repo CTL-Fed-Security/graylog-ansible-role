@@ -42,11 +42,6 @@
   notify: "restart graylog-server"
   tags: configuration
 
-- name: "Graylog server should start after reboot"
-  file:
-    path: "/etc/init/graylog-server.override"
-    state: "absent"
-
 - meta: "flush_handlers"
 
 - name: "Wait for Graylog server to startup"
