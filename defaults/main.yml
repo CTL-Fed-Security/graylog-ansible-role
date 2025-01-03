@@ -33,7 +33,7 @@ graylog_http_tls_key_file:            "/path/to/graylog.key"
 graylog_http_tls_key_password:        ""
 graylog_http_max_header_size:         8192
 graylog_http_thread_pool_size:        16
-graylog_enabled_tls_protocols:      "TLSv1.2"
+graylog_enabled_tls_protocols:        "TLSv1.2"
 
 # Elasticsearch/Opensearch
 graylog_elasticsearch_hosts:                            "http://127.0.0.1:9200"
@@ -70,7 +70,7 @@ graylog_elasticsearch_output_flush_interval:            1
 graylog_elasticsearch_version_probe_attempts:           0  
 graylog_elasticsearch_version_probe_delay:              "5s"
 graylog_default_events_index_prefix:                    "gl-events"
-graylog_default_system_events_index_prefix:             gl-system-events
+graylog_default_system_events_index_prefix:             "gl-system-events"
 
 # Search
 graylog_allow_leading_wildcard_searches:                False
