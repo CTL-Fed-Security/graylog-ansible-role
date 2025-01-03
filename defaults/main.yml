@@ -55,7 +55,6 @@ graylog_elasticsearch_max_docs_per_index:               20000000
 graylog_elasticsearch_max_size_per_index:               32212254720
 graylog_elasticsearch_max_time_per_index:               "1d"
 graylog_elasticsearch_disable_version_check:            True
-graylog_no_retention:                                   False
 graylog_elasticsearch_max_number_of_indices:            20
 graylog_elasticsearch_shards:                           1
 graylog_elasticsearch_replicas:                         0
