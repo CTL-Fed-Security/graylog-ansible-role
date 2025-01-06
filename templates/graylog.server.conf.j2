@@ -207,17 +207,7 @@ trusted_proxies = {{ graylog_trusted_proxies }}
 # requires authentication.
 #
 # Default: http://127.0.0.1:9200
-{% if graylog_elasticsearch_multiple_hosts is defined %}
-elasticsearch_hosts = {% for server in groups['{{graylog_elasticsearch_multiple_hosts}}'] -%}
-{{graylog_elasticsearch_discovery_default_scheme}}://{{graylog_elasticsearch_username}}:{{ graylog_elasticsearch_user_credential }}@{{ hostvars[server]['ansible_host'] }}:9200
-{%-if not loop.last -%}
-,
-{%- else %}
-{%- endif %}
-{%- endfor %}
-{% else %}
 elasticsearch_hosts = {{ graylog_elasticsearch_hosts }}
-{% endif %}
 
 # Maximum number of attempts to connect to elasticsearch on boot for the version probe.
 #
@@ -579,16 +569,7 @@ shutdown_timeout = {{ graylog_shutdown_timeout }}
 
 # MongoDB connection string
 # See https://docs.mongodb.com/manual/reference/connection-string/ for details
-{% if graylog_mongodb_multiple_hosts is defined %}
-mongodb_uri = mongodb://{{ mongod_graylog_database_user }}:{{ mongod_graylog_database_user_password }}@{% for server in groups['mongodb']|sort -%}
-{{ hostvars[server]['ansible_host'] }}:27017
-{%-if not loop.last -%}
-,
-{%- else %}
-{%- endif %}{%-endfor %}/graylog?replicaSet=rs0
-{% else %}
 mongodb_uri = {{ graylog_mongodb_uri }}
-{% endif %}
 
 # Authenticate against the MongoDB server
 # '+'-signs in the username or password need to be replaced by '%2B'
