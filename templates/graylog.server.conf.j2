@@ -234,7 +234,7 @@ elasticsearch_socket_timeout = {{ graylog_elasticsearch_socket_timeout }}
 # be tore down.
 #
 # Default: inf
-elasticsearch_idle_timeout = {{ graylog_elasticsearch_idle_timeout }}
+# elasticsearch_idle_timeout = {{ graylog_elasticsearch_idle_timeout }}
 
 # Maximum number of total connections to Elasticsearch.
 #
@@ -678,7 +678,7 @@ proxied_requests_thread_pool_size = {{ graylog_proxied_requests_thread_pool_size
 # The server is writing processing status information to the database on a regular basis. This setting controls how
 # often the data is written to the database.
 # Default: 1s (cannot be less than 1s)
-processing_status_persist_interval = graylog_processing_status_persist_interval
+processing_status_persist_interval = {{ graylog_processing_status_persist_interval }}
 
 # Configures the threshold for detecting outdated processing status records. Any records that haven't been updated
 # in the configured threshold will be ignored.
