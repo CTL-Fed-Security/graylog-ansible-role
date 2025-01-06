@@ -165,6 +165,9 @@ graylog_server_java_opts:     "-Xms{{ graylog_server_heap_size }} -Xmx{{ graylog
 graylog_server_args:          ""
 graylog_server_wrapper:       ""
 
+# Disable steps which break tests
+graylog_not_testing:           True
+
 # Plugins
 graylog_install_enterprise_plugins:               False
 graylog_install_integrations_plugins:             False
